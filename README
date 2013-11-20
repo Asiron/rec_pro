@@ -34,9 +34,9 @@ Usage:
 
 	- Attempt to decrypt all files from temporary directory
 		default dir name is /out
-	- Extracts appended MD5 sum and calculated MD5 for this file without appended sum
+	- Extracts appended MD5 sum and calculates MD5 for that file without appended sum
 	- Unzips files
-	- Concatenates files to one and puts in decrypted.txt
+	- Concatenates files to one "decrypted.txt"
 
 	---------------------------------------------------
 
