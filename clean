@@ -1,0 +1,5 @@
+#!/bin/bash
+TEMP_DIR=out/
+if [ -d $TEMP_DIR ]; then
+	rm -r $TEMP_DIR
+fi

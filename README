@@ -1,0 +1,56 @@
+Simple record protocol.
+Created to be compatible with Mac OS X based on BSD, therefore there might be some problems with Linux distros.
+
+Installation:
+	
+	brew install gpg
+
+	chmod u+x outgoing.sh
+	chmod u+x incoming.sh
+	chmod u+x clean
+
+Usage:
+
+	---------------------------------------------------
+	
+	./outgoing.sh <filename.txt> <passphrase>    
+
+	Default passphrase is $PASSPHRASE variable. 
+	Initially set to "Iloveprogramming".
+
+	- Creates new temporary directory with name specified in outgoing.sh as $TEMP_DIR
+		default dir name is /out
+	- Splits files into smaller files of maximum size of 1000 lines
+	- Zips files
+	- Calculates MD5 and appends it to the end of the file
+	- Encrypts file with <passphrase>
+
+	---------------------------------------------------
+
+	./incoming.sh <passphrase>
+
+	Default passphrase is $PASSPHRASE variable.
+	Initially set to "Iloveprogramming".
+
+	- Attempt to decrypt all files from temporary directory
+		default dir name is /out
+	- Extracts appended MD5 sum and calculated MD5 for this file without appended sum
+	- Unzips files
+	- Concatenates files to one and puts in decrypted.txt
+
+	---------------------------------------------------
+
+	./clean
+
+	Cleans temporary directory.
+	Default dir name is /out
+
+Example:
+
+	./outgoing book.txt "uni.lu"
+	./incoming "uni.lu"
+
+	diff book.txt decrypted.txt
+
+	Diff should yield nothing, meaning files match perfectly.
+
